@@ -1,30 +1,19 @@
-module tetris(//input Count,
+module tetris(
 			output reg [7:0] DATA_R, DATA_G, DATA_B,
-			output reg [2:0] COMM,
-			output reg [2:0] s = 3'b000,
-			output reg [2:0] s4 = 3'b000,
-			output reg beep,
-			input left, right, change, down,
-			output enable,
-			output IH,
-			output testled,
+			output reg [2:0] COMM,	//8*8 control
 			output reg [0:7] level = 8'b00000000,
-			output reg [0:6] z = 7'b0000001,
+			output reg [0:6]  seg= 7'b0000001,
+			output reg beep,
+			output enable,
+			input left, right, change, down,
 			input CLK);
+			
+			reg [2:0] s = 3'b000;	//which block
+			reg [2:0] s4 = 3'b000;	//s = s4%7
 			assign enable = 1'b1;
-			int now = 0;
 			reg newblock;
 			int level_n = 0;
-	var bit [0:7] blank = 8'b11111111;
 			
-	var bit [7:0][7:0] blank_Char = '{8'b11111111,
-												8'b11111111,
-												8'b11111111,
-												8'b11111111,
-												8'b11111111,
-												8'b11111111,
-												8'b11111111,
-												8'b11111111};
 	var bit [0:7][7:0] windows_Char = '{8'b11111111,           //:)
 													8'b10111101,
 													8'b11011011,
@@ -56,17 +45,6 @@ module tetris(//input Count,
 															12'b111111111111,
 															12'b111111111111};
 	var bit [0:10][0:11] back_Char = '{12'b111111111111,
-													12'b111111111111,
-													12'b111111111111,
-													12'b111111111111,
-													12'b111111111111,
-													12'b111111111111,
-													12'b111111111111,
-													12'b111111111111,
-													12'b111111111111,
-													12'b111111111111,
-													12'b111111111111};
-	var bit [0:10][0:11] backup_Char = '{12'b111111111111,
 													12'b111111111111,
 													12'b111111111111,
 													12'b111111111111,
@@ -242,7 +220,7 @@ module tetris(//input Count,
 													  4'b0011,
 													  4'b1011,
 													  4'b1111,
-													  //Z
+													  //z
 													  4'b1111,
 													  4'b0011,
 													  4'b1001,
@@ -271,9 +249,6 @@ module tetris(//input Count,
 	byte cnt;
 	int x;
 	int y;
-	byte tmp_x;
-	byte tmp_y;
-	reg flag1;
 	reg [0:1] rotate = 2'b00;
 	int over;
 	int clean_flag;
@@ -285,18 +260,14 @@ module tetris(//input Count,
 			DATA_R = 8'b11111111;
 			DATA_G = 8'b11111111;
 			DATA_B = 8'b11111111;
-			IH = 0;
 			newblock <= 0;
 			x = 5;
 			y = 9;
-			tmp_x = 0;
-			tmp_y = 0;
 			rotate = 0;
-			flag1 <= 1'b1;
 			s <= s4%7;
 			over = 0;
-			z <= 7'b0000001;
-			level_n = 7;
+			seg <= 7'b0000001;
+			level_n = 0;
 		end
 	
 	always @(posedge CLK_div)// update screen
@@ -310,7 +281,6 @@ module tetris(//input Count,
 			
 			if(newblock)
 			begin
-				//testled <= 1'b0;
 				back_Char <= back_Char&front_Char;
 				s <= s4%7; //get new block
 				
@@ -333,7 +303,7 @@ module tetris(//input Count,
 								back_Char[i][7] <= 1'b1;
 							end
 						//level max -> level up (speed up)
-						if(level == 8'b10000000)//if you want to level up quickly, change to 8'b10000000 will level up very fast and easy
+						if(level == 8'b11000000)//if you want to level up quickly, change to 8'b10000000 will level up very fast and easy
 						begin
 							level_n = level_n + 1;
 							beep_act <= 1;
@@ -378,27 +348,27 @@ module tetris(//input Count,
 			//print level number
 			//Hexadecimal to 7SEG
 			if(level_n==0)
-				z <= 7'b0000001;
+				seg <= 7'b0000001;
 			else if(level_n==1)
-				z <= 7'b1001111;
+				seg <= 7'b1001111;
 			else if(level_n==2)
-				z <= 7'b0010010; 
+				seg <= 7'b0010010; 
 			else if(level_n==3)
-				z <= 7'b0000110;
+				seg <= 7'b0000110;
 			else if(level_n==4)
-				z <= 7'b1001100;
+				seg <= 7'b1001100;
 			else if(level_n==5)
-				z <= 7'b0100100; 
+				seg <= 7'b0100100; 
 			else if(level_n==6)
-				z <= 7'b0100000;
+				seg <= 7'b0100000;
 			else if(level_n==7)
-				z <= 7'b0001111;
+				seg <= 7'b0001111;
 			else if(level_n==8)
-				z <= 7'b0000000;
+				seg <= 7'b0000000;
 			else if(level_n==9)
-				z <= 7'b0000100;
+				seg <= 7'b0000100;
 			else
-				z <= 7'b0000000;
+				seg <= 7'b0000000;
 			
 			//print GAME OVER :(
 			if(over>0&&over<50000)
@@ -426,7 +396,7 @@ module tetris(//input Count,
 		begin
 			s4 <= s4 + 1'b1;
 		end
-	always @(posedge CLK_div_change) // 50hz
+	always @(posedge CLK_div_change) // 50h
 		begin
 			if(over==0)
 			begin
@@ -538,7 +508,7 @@ module divfreq_change(input CLK, output reg CLK_div_change);
 reg [24:0] Count;
 always @(posedge CLK)
 begin
-	if(Count >= 500000)   //50hz
+	if(Count >= 500000)   //50h
 		begin
 			Count <= 25'b0;
 			CLK_div_change <= ~CLK_div_change;
@@ -552,7 +522,7 @@ module divfreq_beep(input CLK, beep_act, output reg beep);
 	reg [24:0] Count;
 	always @(posedge CLK)
 		begin
-		if(Count >= 25000000)   //1hz
+		if(Count >= 25000000)   //1h
 			begin
 				Count <= 25'b0;
 				if(beep_act)
