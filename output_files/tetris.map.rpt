@@ -1,0 +1,823 @@
+Analysis & Synthesis report for tetris
+Tue Jan 02 11:33:58 2024
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Top-level Entity: |tetris
+ 14. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
+ 17. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                    ;
++------------------------------------+--------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Tue Jan 02 11:33:58 2024      ;
+; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Revision Name                      ; tetris                                     ;
+; Top-level Entity Name              ; tetris                                     ;
+; Family                             ; Cyclone III                                ;
+; Total logic elements               ; 2,466                                      ;
+;     Total combinational functions  ; 2,275                                      ;
+;     Dedicated logic registers      ; 769                                        ;
+; Total registers                    ; 769                                        ;
+; Total pins                         ; 57                                         ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 0                                          ;
+; Embedded Multiplier 9-bit elements ; 0                                          ;
+; Total PLLs                         ; 0                                          ;
++------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP3C10E144C8       ;                    ;
+; Top-level entity name                                                      ; tetris             ; tetris             ;
+; Family name                                                                ; Cyclone III        ; Cyclone IV GX      ;
+; Verilog Show LMF Mapping Messages                                          ; Off                ;                    ;
+; Verilog Version                                                            ; SystemVerilog_2005 ; Verilog_2001       ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 16     ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                           ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                       ; Library ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
+; tetris.v                         ; yes             ; User Verilog HDL File        ; C:/logic_033/final_tetris/tetris.v                                 ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
+; aglobal131.inc                   ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/aglobal131.inc      ;         ;
+; db/lpm_divide_78m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/logic_033/final_tetris/db/lpm_divide_78m.tdf                    ;         ;
+; db/sign_div_unsign_5kh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/logic_033/final_tetris/db/sign_div_unsign_5kh.tdf               ;         ;
+; db/alt_u_div_l2f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/logic_033/final_tetris/db/alt_u_div_l2f.tdf                     ;         ;
+; db/add_sub_unc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/logic_033/final_tetris/db/add_sub_unc.tdf                       ;         ;
+; db/add_sub_vnc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/logic_033/final_tetris/db/add_sub_vnc.tdf                       ;         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                      ;
++---------------------------------------------+--------------------+
+; Resource                                    ; Usage              ;
++---------------------------------------------+--------------------+
+; Estimated Total logic elements              ; 2,466              ;
+;                                             ;                    ;
+; Total combinational functions               ; 2275               ;
+; Logic element usage by number of LUT inputs ;                    ;
+;     -- 4 input functions                    ; 1237               ;
+;     -- 3 input functions                    ; 370                ;
+;     -- <=2 input functions                  ; 668                ;
+;                                             ;                    ;
+; Logic elements by mode                      ;                    ;
+;     -- normal mode                          ; 1676               ;
+;     -- arithmetic mode                      ; 599                ;
+;                                             ;                    ;
+; Total registers                             ; 769                ;
+;     -- Dedicated logic registers            ; 769                ;
+;     -- I/O registers                        ; 0                  ;
+;                                             ;                    ;
+; I/O pins                                    ; 57                 ;
+; Embedded Multiplier 9-bit elements          ; 0                  ;
+; Maximum fan-out node                        ; divfreq:F0|CLK_div ;
+; Maximum fan-out                             ; 500                ;
+; Total fan-out                               ; 9484               ;
+; Average fan-out                             ; 3.00               ;
++---------------------------------------------+--------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                         ;
++----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                     ; Library Name ;
++----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------+--------------+
+; |tetris                                ; 2275 (2130)       ; 769 (665)    ; 0           ; 0            ; 0       ; 0         ; 57   ; 0            ; |tetris                                                                                                 ; work         ;
+;    |divfreq2:F1|                       ; 34 (34)           ; 26 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |tetris|divfreq2:F1                                                                                     ; work         ;
+;    |divfreq:F0|                        ; 34 (34)           ; 26 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |tetris|divfreq:F0                                                                                      ; work         ;
+;    |divfreq_beep:comb_4|               ; 37 (37)           ; 26 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |tetris|divfreq_beep:comb_4                                                                             ; work         ;
+;    |divfreq_change:F4|                 ; 33 (33)           ; 26 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |tetris|divfreq_change:F4                                                                               ; work         ;
+;    |lpm_divide:Mod0|                   ; 7 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |tetris|lpm_divide:Mod0                                                                                 ; work         ;
+;       |lpm_divide_78m:auto_generated|  ; 7 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |tetris|lpm_divide:Mod0|lpm_divide_78m:auto_generated                                                   ; work         ;
+;          |sign_div_unsign_5kh:divider| ; 7 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |tetris|lpm_divide:Mod0|lpm_divide_78m:auto_generated|sign_div_unsign_5kh:divider                       ; work         ;
+;             |alt_u_div_l2f:divider|    ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |tetris|lpm_divide:Mod0|lpm_divide_78m:auto_generated|sign_div_unsign_5kh:divider|alt_u_div_l2f:divider ; work         ;
++----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++-----------------------------------------+----------------------------------------+
+; Register name                           ; Reason for Removal                     ;
++-----------------------------------------+----------------------------------------+
+; front_test_Char[10][11]                 ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[10][10]                 ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[10][9]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[9][11]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[9][10]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[9][9]                   ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[8][11]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[8][10]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[8][9]                   ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[7][11]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[7][10]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[7][9]                   ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[6][11]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[6][10]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[6][9]                   ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[5][11]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[5][10]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[5][9]                   ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[4][11]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[4][10]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[4][9]                   ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[3][11]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[3][10]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[3][9]                   ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[2][11]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[2][10]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[2][9]                   ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[1][11]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[1][10]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[1][9]                   ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[0][11]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[0][10]                  ; Stuck at VCC due to stuck port data_in ;
+; front_test_Char[0][9]                   ; Stuck at VCC due to stuck port data_in ;
+; back_test_two_Char[10][11]              ; Lost fanout                            ;
+; back_test_two_Char[10][10]              ; Lost fanout                            ;
+; back_test_two_Char[10][9]               ; Lost fanout                            ;
+; back_test_two_Char[9][11]               ; Lost fanout                            ;
+; back_test_two_Char[9][10]               ; Lost fanout                            ;
+; back_test_two_Char[9][9]                ; Lost fanout                            ;
+; back_test_two_Char[8][11]               ; Lost fanout                            ;
+; back_test_two_Char[8][10]               ; Lost fanout                            ;
+; back_test_two_Char[8][9]                ; Lost fanout                            ;
+; back_test_two_Char[7][11]               ; Lost fanout                            ;
+; back_test_two_Char[7][10]               ; Lost fanout                            ;
+; back_test_two_Char[7][9]                ; Lost fanout                            ;
+; back_test_two_Char[6][11]               ; Lost fanout                            ;
+; back_test_two_Char[6][10]               ; Lost fanout                            ;
+; back_test_two_Char[6][9]                ; Lost fanout                            ;
+; back_test_two_Char[5][11]               ; Lost fanout                            ;
+; back_test_two_Char[5][10]               ; Lost fanout                            ;
+; back_test_two_Char[5][9]                ; Lost fanout                            ;
+; back_test_two_Char[4][11]               ; Lost fanout                            ;
+; back_test_two_Char[4][10]               ; Lost fanout                            ;
+; back_test_two_Char[4][9]                ; Lost fanout                            ;
+; back_test_two_Char[3][11]               ; Lost fanout                            ;
+; back_test_two_Char[3][10]               ; Lost fanout                            ;
+; back_test_two_Char[3][9]                ; Lost fanout                            ;
+; back_test_two_Char[2][11]               ; Lost fanout                            ;
+; back_test_two_Char[2][10]               ; Lost fanout                            ;
+; back_test_two_Char[2][9]                ; Lost fanout                            ;
+; back_test_two_Char[1][11]               ; Lost fanout                            ;
+; back_test_two_Char[1][10]               ; Lost fanout                            ;
+; back_test_two_Char[1][9]                ; Lost fanout                            ;
+; back_test_two_Char[0][11]               ; Lost fanout                            ;
+; back_test_two_Char[0][10]               ; Lost fanout                            ;
+; back_test_two_Char[0][9]                ; Lost fanout                            ;
+; back_test_two_Char[10][8]               ; Lost fanout                            ;
+; back_test_two_Char[10][7]               ; Lost fanout                            ;
+; back_test_two_Char[10][6]               ; Lost fanout                            ;
+; back_test_two_Char[10][5]               ; Lost fanout                            ;
+; back_test_two_Char[10][4]               ; Lost fanout                            ;
+; back_test_two_Char[10][3]               ; Lost fanout                            ;
+; back_test_two_Char[10][2]               ; Lost fanout                            ;
+; back_test_two_Char[10][1]               ; Lost fanout                            ;
+; back_test_two_Char[10][0]               ; Lost fanout                            ;
+; back_test_two_Char[9][8]                ; Lost fanout                            ;
+; back_test_two_Char[9][7]                ; Lost fanout                            ;
+; back_test_two_Char[9][6]                ; Lost fanout                            ;
+; back_test_two_Char[9][5]                ; Lost fanout                            ;
+; back_test_two_Char[9][4]                ; Lost fanout                            ;
+; back_test_two_Char[9][3]                ; Lost fanout                            ;
+; back_test_two_Char[9][2]                ; Lost fanout                            ;
+; back_test_two_Char[9][1]                ; Lost fanout                            ;
+; back_test_two_Char[9][0]                ; Lost fanout                            ;
+; back_test_two_Char[8][8]                ; Lost fanout                            ;
+; back_test_two_Char[8][7]                ; Lost fanout                            ;
+; back_test_two_Char[8][6]                ; Lost fanout                            ;
+; back_test_two_Char[8][5]                ; Lost fanout                            ;
+; back_test_two_Char[8][4]                ; Lost fanout                            ;
+; back_test_two_Char[8][3]                ; Lost fanout                            ;
+; back_test_two_Char[8][2]                ; Lost fanout                            ;
+; back_test_two_Char[8][1]                ; Lost fanout                            ;
+; back_test_two_Char[8][0]                ; Lost fanout                            ;
+; back_test_two_Char[7][8]                ; Lost fanout                            ;
+; back_test_two_Char[7][7]                ; Lost fanout                            ;
+; back_test_two_Char[7][6]                ; Lost fanout                            ;
+; back_test_two_Char[7][5]                ; Lost fanout                            ;
+; back_test_two_Char[7][4]                ; Lost fanout                            ;
+; back_test_two_Char[7][3]                ; Lost fanout                            ;
+; back_test_two_Char[7][2]                ; Lost fanout                            ;
+; back_test_two_Char[7][1]                ; Lost fanout                            ;
+; back_test_two_Char[7][0]                ; Lost fanout                            ;
+; back_test_two_Char[6][8]                ; Lost fanout                            ;
+; back_test_two_Char[6][7]                ; Lost fanout                            ;
+; back_test_two_Char[6][6]                ; Lost fanout                            ;
+; back_test_two_Char[6][5]                ; Lost fanout                            ;
+; back_test_two_Char[6][4]                ; Lost fanout                            ;
+; back_test_two_Char[6][3]                ; Lost fanout                            ;
+; back_test_two_Char[6][2]                ; Lost fanout                            ;
+; back_test_two_Char[6][1]                ; Lost fanout                            ;
+; back_test_two_Char[6][0]                ; Lost fanout                            ;
+; back_test_two_Char[5][8]                ; Lost fanout                            ;
+; back_test_two_Char[5][7]                ; Lost fanout                            ;
+; back_test_two_Char[5][6]                ; Lost fanout                            ;
+; back_test_two_Char[5][5]                ; Lost fanout                            ;
+; back_test_two_Char[5][4]                ; Lost fanout                            ;
+; back_test_two_Char[5][3]                ; Lost fanout                            ;
+; back_test_two_Char[5][2]                ; Lost fanout                            ;
+; back_test_two_Char[5][1]                ; Lost fanout                            ;
+; back_test_two_Char[5][0]                ; Lost fanout                            ;
+; back_test_two_Char[4][8]                ; Lost fanout                            ;
+; back_test_two_Char[4][7]                ; Lost fanout                            ;
+; back_test_two_Char[4][6]                ; Lost fanout                            ;
+; back_test_two_Char[4][5]                ; Lost fanout                            ;
+; back_test_two_Char[4][4]                ; Lost fanout                            ;
+; back_test_two_Char[4][3]                ; Lost fanout                            ;
+; back_test_two_Char[4][2]                ; Lost fanout                            ;
+; back_test_two_Char[4][1]                ; Lost fanout                            ;
+; back_test_two_Char[4][0]                ; Lost fanout                            ;
+; back_test_two_Char[3][8]                ; Lost fanout                            ;
+; back_test_two_Char[3][7]                ; Lost fanout                            ;
+; back_test_two_Char[3][6]                ; Lost fanout                            ;
+; back_test_two_Char[3][5]                ; Lost fanout                            ;
+; back_test_two_Char[3][4]                ; Lost fanout                            ;
+; back_test_two_Char[3][3]                ; Lost fanout                            ;
+; back_test_two_Char[3][2]                ; Lost fanout                            ;
+; back_test_two_Char[3][1]                ; Lost fanout                            ;
+; back_test_two_Char[3][0]                ; Lost fanout                            ;
+; back_test_two_Char[2][8]                ; Lost fanout                            ;
+; back_test_two_Char[2][7]                ; Lost fanout                            ;
+; back_test_two_Char[2][6]                ; Lost fanout                            ;
+; back_test_two_Char[2][5]                ; Lost fanout                            ;
+; back_test_two_Char[2][4]                ; Lost fanout                            ;
+; back_test_two_Char[2][3]                ; Lost fanout                            ;
+; back_test_two_Char[2][2]                ; Lost fanout                            ;
+; back_test_two_Char[2][1]                ; Lost fanout                            ;
+; back_test_two_Char[2][0]                ; Lost fanout                            ;
+; back_test_two_Char[1][8]                ; Lost fanout                            ;
+; back_test_two_Char[1][7]                ; Lost fanout                            ;
+; back_test_two_Char[1][6]                ; Lost fanout                            ;
+; back_test_two_Char[1][5]                ; Lost fanout                            ;
+; back_test_two_Char[1][4]                ; Lost fanout                            ;
+; back_test_two_Char[1][3]                ; Lost fanout                            ;
+; back_test_two_Char[1][2]                ; Lost fanout                            ;
+; back_test_two_Char[1][1]                ; Lost fanout                            ;
+; back_test_two_Char[1][0]                ; Lost fanout                            ;
+; back_test_two_Char[0][8]                ; Lost fanout                            ;
+; back_test_two_Char[0][7]                ; Lost fanout                            ;
+; back_test_two_Char[0][6]                ; Lost fanout                            ;
+; back_test_two_Char[0][5]                ; Lost fanout                            ;
+; back_test_two_Char[0][4]                ; Lost fanout                            ;
+; back_test_two_Char[0][3]                ; Lost fanout                            ;
+; back_test_two_Char[0][2]                ; Lost fanout                            ;
+; back_test_two_Char[0][1]                ; Lost fanout                            ;
+; back_test_two_Char[0][0]                ; Lost fanout                            ;
+; back_test_Char[10][11]                  ; Lost fanout                            ;
+; back_test_Char[10][10]                  ; Lost fanout                            ;
+; back_test_Char[10][9]                   ; Lost fanout                            ;
+; back_test_Char[9][11]                   ; Lost fanout                            ;
+; back_test_Char[9][10]                   ; Lost fanout                            ;
+; back_test_Char[9][9]                    ; Lost fanout                            ;
+; back_test_Char[8][11]                   ; Lost fanout                            ;
+; back_test_Char[8][10]                   ; Lost fanout                            ;
+; back_test_Char[8][9]                    ; Lost fanout                            ;
+; back_test_Char[7][11]                   ; Lost fanout                            ;
+; back_test_Char[7][10]                   ; Lost fanout                            ;
+; back_test_Char[7][9]                    ; Lost fanout                            ;
+; back_test_Char[6][11]                   ; Lost fanout                            ;
+; back_test_Char[6][10]                   ; Lost fanout                            ;
+; back_test_Char[6][9]                    ; Lost fanout                            ;
+; back_test_Char[5][11]                   ; Lost fanout                            ;
+; back_test_Char[5][10]                   ; Lost fanout                            ;
+; back_test_Char[5][9]                    ; Lost fanout                            ;
+; back_test_Char[4][11]                   ; Lost fanout                            ;
+; back_test_Char[4][10]                   ; Lost fanout                            ;
+; back_test_Char[4][9]                    ; Lost fanout                            ;
+; back_test_Char[3][11]                   ; Lost fanout                            ;
+; back_test_Char[3][10]                   ; Lost fanout                            ;
+; back_test_Char[3][9]                    ; Lost fanout                            ;
+; back_test_Char[2][11]                   ; Lost fanout                            ;
+; back_test_Char[2][10]                   ; Lost fanout                            ;
+; back_test_Char[2][9]                    ; Lost fanout                            ;
+; back_test_Char[1][11]                   ; Lost fanout                            ;
+; back_test_Char[1][10]                   ; Lost fanout                            ;
+; back_test_Char[1][9]                    ; Lost fanout                            ;
+; back_test_Char[0][11]                   ; Lost fanout                            ;
+; back_test_Char[0][10]                   ; Lost fanout                            ;
+; back_test_Char[0][9]                    ; Lost fanout                            ;
+; back_test_Char[10][0]                   ; Merged with back_test_Char[0][0]       ;
+; back_test_Char[1][0]                    ; Merged with back_test_Char[0][0]       ;
+; back_test_Char[2][0]                    ; Merged with back_test_Char[0][0]       ;
+; back_test_Char[3][0]                    ; Merged with back_test_Char[0][0]       ;
+; back_test_Char[4][0]                    ; Merged with back_test_Char[0][0]       ;
+; back_test_Char[5][0]                    ; Merged with back_test_Char[0][0]       ;
+; back_test_Char[6][0]                    ; Merged with back_test_Char[0][0]       ;
+; back_test_Char[7][0]                    ; Merged with back_test_Char[0][0]       ;
+; back_test_Char[8][0]                    ; Merged with back_test_Char[0][0]       ;
+; back_test_Char[9][0]                    ; Merged with back_test_Char[0][0]       ;
+; Total Number of Removed Registers = 208 ;                                        ;
++-----------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                              ;
++-------------------------+---------------------------+------------------------------------------------------------------------------------+
+; Register name           ; Reason for Removal        ; Registers Removed due to This Register                                             ;
++-------------------------+---------------------------+------------------------------------------------------------------------------------+
+; front_test_Char[10][11] ; Stuck at VCC              ; back_test_two_Char[10][11], back_test_two_Char[10][10], back_test_two_Char[10][9], ;
+;                         ; due to stuck port data_in ; back_test_two_Char[10][8], back_test_two_Char[10][7], back_test_two_Char[10][6],   ;
+;                         ;                           ; back_test_Char[10][11], back_test_Char[10][10], back_test_Char[10][9]              ;
+; front_test_Char[9][11]  ; Stuck at VCC              ; back_test_two_Char[9][11], back_test_Char[9][11]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[9][10]  ; Stuck at VCC              ; back_test_two_Char[9][10], back_test_Char[9][10]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[9][9]   ; Stuck at VCC              ; back_test_two_Char[9][9], back_test_Char[9][9]                                     ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[8][11]  ; Stuck at VCC              ; back_test_two_Char[8][11], back_test_Char[8][11]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[8][10]  ; Stuck at VCC              ; back_test_two_Char[8][10], back_test_Char[8][10]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[8][9]   ; Stuck at VCC              ; back_test_two_Char[8][9], back_test_Char[8][9]                                     ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[7][11]  ; Stuck at VCC              ; back_test_two_Char[7][11], back_test_Char[7][11]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[7][10]  ; Stuck at VCC              ; back_test_two_Char[7][10], back_test_Char[7][10]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[7][9]   ; Stuck at VCC              ; back_test_two_Char[7][9], back_test_Char[7][9]                                     ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[6][11]  ; Stuck at VCC              ; back_test_two_Char[6][11], back_test_Char[6][11]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[6][10]  ; Stuck at VCC              ; back_test_two_Char[6][10], back_test_Char[6][10]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[6][9]   ; Stuck at VCC              ; back_test_two_Char[6][9], back_test_Char[6][9]                                     ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[5][11]  ; Stuck at VCC              ; back_test_two_Char[5][11], back_test_Char[5][11]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[5][10]  ; Stuck at VCC              ; back_test_two_Char[5][10], back_test_Char[5][10]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[5][9]   ; Stuck at VCC              ; back_test_two_Char[5][9], back_test_Char[5][9]                                     ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[4][11]  ; Stuck at VCC              ; back_test_two_Char[4][11], back_test_Char[4][11]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[4][10]  ; Stuck at VCC              ; back_test_two_Char[4][10], back_test_Char[4][10]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[4][9]   ; Stuck at VCC              ; back_test_two_Char[4][9], back_test_Char[4][9]                                     ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[3][11]  ; Stuck at VCC              ; back_test_two_Char[3][11], back_test_Char[3][11]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[3][10]  ; Stuck at VCC              ; back_test_two_Char[3][10], back_test_Char[3][10]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[3][9]   ; Stuck at VCC              ; back_test_two_Char[3][9], back_test_Char[3][9]                                     ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[2][11]  ; Stuck at VCC              ; back_test_two_Char[2][11], back_test_Char[2][11]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[2][10]  ; Stuck at VCC              ; back_test_two_Char[2][10], back_test_Char[2][10]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[2][9]   ; Stuck at VCC              ; back_test_two_Char[2][9], back_test_Char[2][9]                                     ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[1][11]  ; Stuck at VCC              ; back_test_two_Char[1][11], back_test_Char[1][11]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[1][10]  ; Stuck at VCC              ; back_test_two_Char[1][10], back_test_Char[1][10]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[1][9]   ; Stuck at VCC              ; back_test_two_Char[1][9], back_test_Char[1][9]                                     ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[0][11]  ; Stuck at VCC              ; back_test_two_Char[0][11], back_test_Char[0][11]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[0][10]  ; Stuck at VCC              ; back_test_two_Char[0][10], back_test_Char[0][10]                                   ;
+;                         ; due to stuck port data_in ;                                                                                    ;
+; front_test_Char[0][9]   ; Stuck at VCC              ; back_test_two_Char[0][9], back_test_Char[0][9]                                     ;
+;                         ; due to stuck port data_in ;                                                                                    ;
++-------------------------+---------------------------+------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 769   ;
+; Number of registers using Synchronous Clear  ; 206   ;
+; Number of registers using Synchronous Load   ; 1     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 270   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------+
+; Inverted Register Statistics                        ;
++-------------------------------------------+---------+
+; Inverted Register                         ; Fan out ;
++-------------------------------------------+---------+
+; DATA_R[0]~reg0                            ; 1       ;
+; DATA_R[1]~reg0                            ; 1       ;
+; DATA_R[2]~reg0                            ; 1       ;
+; DATA_R[3]~reg0                            ; 1       ;
+; DATA_R[4]~reg0                            ; 1       ;
+; DATA_R[5]~reg0                            ; 1       ;
+; DATA_R[6]~reg0                            ; 1       ;
+; DATA_R[7]~reg0                            ; 1       ;
+; DATA_G[0]~reg0                            ; 1       ;
+; DATA_G[1]~reg0                            ; 1       ;
+; DATA_G[2]~reg0                            ; 1       ;
+; DATA_G[3]~reg0                            ; 1       ;
+; DATA_G[4]~reg0                            ; 1       ;
+; DATA_G[5]~reg0                            ; 1       ;
+; DATA_G[6]~reg0                            ; 1       ;
+; DATA_G[7]~reg0                            ; 1       ;
+; z[6]~reg0                                 ; 1       ;
+; front_Char[4][7]                          ; 3       ;
+; front_Char[7][7]                          ; 3       ;
+; front_Char[6][7]                          ; 3       ;
+; front_Char[5][7]                          ; 3       ;
+; front_Char[9][7]                          ; 4       ;
+; front_Char[8][7]                          ; 3       ;
+; front_Char[10][7]                         ; 3       ;
+; front_Char[3][7]                          ; 3       ;
+; front_Char[0][7]                          ; 3       ;
+; front_Char[2][7]                          ; 4       ;
+; front_Char[1][7]                          ; 3       ;
+; back_Char[9][8]                           ; 1       ;
+; back_Char[8][8]                           ; 1       ;
+; back_Char[7][8]                           ; 1       ;
+; back_Char[6][8]                           ; 1       ;
+; back_Char[5][8]                           ; 1       ;
+; back_Char[4][8]                           ; 1       ;
+; back_Char[3][8]                           ; 1       ;
+; back_Char[2][8]                           ; 1       ;
+; front_Char[4][6]                          ; 3       ;
+; front_Char[7][6]                          ; 3       ;
+; front_Char[6][6]                          ; 3       ;
+; front_Char[5][6]                          ; 3       ;
+; front_Char[9][6]                          ; 4       ;
+; front_Char[8][6]                          ; 3       ;
+; front_Char[10][6]                         ; 3       ;
+; front_Char[3][6]                          ; 3       ;
+; front_Char[0][6]                          ; 3       ;
+; front_Char[2][6]                          ; 4       ;
+; front_Char[1][6]                          ; 3       ;
+; front_Char[4][5]                          ; 3       ;
+; front_Char[7][5]                          ; 3       ;
+; front_Char[6][5]                          ; 3       ;
+; front_Char[5][5]                          ; 3       ;
+; front_Char[9][5]                          ; 4       ;
+; front_Char[8][5]                          ; 3       ;
+; front_Char[10][5]                         ; 3       ;
+; front_Char[3][5]                          ; 3       ;
+; front_Char[0][5]                          ; 3       ;
+; front_Char[2][5]                          ; 4       ;
+; front_Char[1][5]                          ; 3       ;
+; front_Char[4][4]                          ; 3       ;
+; front_Char[7][4]                          ; 3       ;
+; front_Char[6][4]                          ; 3       ;
+; front_Char[5][4]                          ; 3       ;
+; front_Char[9][4]                          ; 4       ;
+; front_Char[8][4]                          ; 3       ;
+; front_Char[10][4]                         ; 3       ;
+; front_Char[3][4]                          ; 3       ;
+; front_Char[0][4]                          ; 3       ;
+; front_Char[2][4]                          ; 4       ;
+; front_Char[1][4]                          ; 3       ;
+; front_Char[4][3]                          ; 3       ;
+; front_Char[7][3]                          ; 3       ;
+; front_Char[6][3]                          ; 3       ;
+; front_Char[5][3]                          ; 3       ;
+; front_Char[9][3]                          ; 4       ;
+; front_Char[8][3]                          ; 3       ;
+; front_Char[10][3]                         ; 3       ;
+; front_Char[3][3]                          ; 3       ;
+; front_Char[0][3]                          ; 3       ;
+; front_Char[2][3]                          ; 4       ;
+; front_Char[1][3]                          ; 3       ;
+; front_Char[4][2]                          ; 3       ;
+; front_Char[7][2]                          ; 3       ;
+; front_Char[6][2]                          ; 3       ;
+; front_Char[5][2]                          ; 3       ;
+; front_Char[3][2]                          ; 3       ;
+; front_Char[0][2]                          ; 3       ;
+; front_Char[2][2]                          ; 4       ;
+; front_Char[1][2]                          ; 3       ;
+; front_Char[10][2]                         ; 3       ;
+; front_Char[8][2]                          ; 3       ;
+; front_Char[9][2]                          ; 4       ;
+; front_Char[4][1]                          ; 3       ;
+; front_Char[7][1]                          ; 3       ;
+; front_Char[6][1]                          ; 3       ;
+; front_Char[5][1]                          ; 3       ;
+; front_Char[9][1]                          ; 4       ;
+; front_Char[8][1]                          ; 3       ;
+; front_Char[10][1]                         ; 3       ;
+; front_Char[3][1]                          ; 3       ;
+; front_Char[0][1]                          ; 3       ;
+; Total number of inverted registers = 413* ;         ;
++-------------------------------------------+---------+
+* Table truncated at 100 items. To change the number of inverted registers reported, set the "Number of Inverted Registers Reported" option under Assignments->Settings->Analysis and Synthesis Settings->More Settings
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; Yes        ; |tetris|x[20]              ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |tetris|count[11]          ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |tetris|over[25]           ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |tetris|z[5]~reg0          ;
+; 5:1                ; 30 bits   ; 90 LEs        ; 30 LEs               ; 60 LEs                 ; Yes        ; |tetris|y[27]              ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |tetris|rotate[0]          ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |tetris|level[5]~reg0      ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |tetris|back_Char[10][0]   ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |tetris|back_Char[3][1]    ;
+; 5:1                ; 11 bits   ; 33 LEs        ; 22 LEs               ; 11 LEs                 ; Yes        ; |tetris|back_Char[5][2]    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |tetris|y[0]               ;
+; 32:1               ; 8 bits    ; 168 LEs       ; 64 LEs               ; 104 LEs                ; Yes        ; |tetris|DATA_G[2]~reg0     ;
+; 6:1                ; 11 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |tetris|back_Char[8][3]    ;
+; 33:1               ; 7 bits    ; 154 LEs       ; 56 LEs               ; 98 LEs                 ; Yes        ; |tetris|DATA_R[1]~reg0     ;
+; 7:1                ; 11 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |tetris|back_Char[6][4]    ;
+; 8:1                ; 11 bits   ; 55 LEs        ; 22 LEs               ; 33 LEs                 ; Yes        ; |tetris|back_Char[1][5]    ;
+; 9:1                ; 11 bits   ; 66 LEs        ; 22 LEs               ; 44 LEs                 ; Yes        ; |tetris|back_Char[1][6]    ;
+; 10:1               ; 11 bits   ; 66 LEs        ; 11 LEs               ; 55 LEs                 ; Yes        ; |tetris|back_Char[6][7]    ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |tetris|over               ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |tetris|level_n            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |tetris|level_n            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |tetris|level_n            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |tetris|level_n            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |tetris|level_n            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |tetris|level_n            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |tetris|level_n            ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |tetris|Selector10         ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |tetris|Selector2          ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |tetris|Selector2          ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |tetris|dcount             ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 64 LEs               ; 32 LEs                 ; No         ; |tetris|level_n            ;
+; 7:1                ; 32 bits   ; 128 LEs       ; 64 LEs               ; 64 LEs                 ; No         ; |tetris|x                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |tetris                                           ;
++----------------+----------------------------------------------------------------------------------+--------------+
+; Parameter Name ; Value                                                                            ; Type         ;
++----------------+----------------------------------------------------------------------------------+--------------+
+; tetris         ; (0111,0111,0111,0111,1111,1111,1111,0000,0111,0111,0111,0111,1111,1111,1111,0000 ; Array/Record ;
+; tetris         ; ,1011,1011,0011,1111,1111,0111,0001,1111,0011,0111,0111,1111,1111,0001,1101,1111 ;              ;
+; tetris         ; ,0111,0111,0011,1111,1111,0001,0111,1111,0011,1011,1011,1111,1111,1101,0001,1111 ;              ;
+; tetris         ; ,1111,0011,0011,1111,1111,0011,0011,1111,1111,0011,0011,1111,1111,0011,0011,1111 ;              ;
+; tetris         ; ,1111,1001,0011,1111,0111,0011,1011,1111,1111,1001,0011,1111,0111,0011,1011,1111 ;              ;
+; tetris         ; ,1111,1011,0001,1111,0111,0011,0111,1111,1111,0001,1011,1111,1011,0011,1011,1111 ;              ;
+; tetris         ; ,1111,0011,1001,1111,1011,0011,0111,1111,1111,0011,1001,1111,1011,0011,0111,1111 ;              ;
+;                ; )                                                                                ;              ;
++----------------+----------------------------------------------------------------------------------+--------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 3              ; Untyped                ;
+; LPM_WIDTHD             ; 3              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_78m ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:18     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+    Info: Processing started: Tue Jan 02 11:33:35 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off tetris -c tetris
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 5 design units, including 5 entities, in source file tetris.v
+    Info (12023): Found entity 1: tetris
+    Info (12023): Found entity 2: divfreq
+    Info (12023): Found entity 3: divfreq2
+    Info (12023): Found entity 4: divfreq_change
+    Info (12023): Found entity 5: divfreq_beep
+Warning (10236): Verilog HDL Implicit Net warning at tetris.v(268): created implicit net for "CLK_div"
+Warning (10236): Verilog HDL Implicit Net warning at tetris.v(269): created implicit net for "CLK_div2"
+Warning (10236): Verilog HDL Implicit Net warning at tetris.v(270): created implicit net for "CLK_div_change"
+Critical Warning (10846): Verilog HDL Instantiation warning at tetris.v(267): instance has no name
+Info (12127): Elaborating entity "tetris" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at tetris.v(15): object "now" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at tetris.v(18): object "blank" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at tetris.v(27): object "blank_Char" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at tetris.v(79): object "backup_Char" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at tetris.v(274): object "tmp_x" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at tetris.v(275): object "tmp_y" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at tetris.v(276): object "flag1" assigned a value but never read
+Warning (10230): Verilog HDL assignment warning at tetris.v(296): truncated value with size 32 to match size of target (3)
+Warning (10855): Verilog HDL warning at tetris.v(282): initial value for variable s should be constant
+Warning (10230): Verilog HDL assignment warning at tetris.v(307): truncated value with size 32 to match size of target (8)
+Warning (10230): Verilog HDL assignment warning at tetris.v(308): truncated value with size 8 to match size of target (3)
+Warning (10230): Verilog HDL assignment warning at tetris.v(315): truncated value with size 32 to match size of target (3)
+Warning (10034): Output port "testled" at tetris.v(10) has no driver
+Info (12128): Elaborating entity "divfreq_beep" for hierarchy "divfreq_beep:comb_4"
+Info (12128): Elaborating entity "divfreq" for hierarchy "divfreq:F0"
+Info (12128): Elaborating entity "divfreq2" for hierarchy "divfreq2:F1"
+Info (12128): Elaborating entity "divfreq_change" for hierarchy "divfreq_change:F4"
+Info (278001): Inferred 1 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0"
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0"
+Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "3"
+    Info (12134): Parameter "LPM_WIDTHD" = "3"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_78m.tdf
+    Info (12023): Found entity 1: lpm_divide_78m
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_5kh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_5kh
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_l2f.tdf
+    Info (12023): Found entity 1: alt_u_div_l2f
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_unc.tdf
+    Info (12023): Found entity 1: add_sub_unc
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_vnc.tdf
+    Info (12023): Found entity 1: add_sub_vnc
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "DATA_B[0]" is stuck at VCC
+    Warning (13410): Pin "DATA_B[1]" is stuck at VCC
+    Warning (13410): Pin "DATA_B[2]" is stuck at VCC
+    Warning (13410): Pin "DATA_B[3]" is stuck at VCC
+    Warning (13410): Pin "DATA_B[4]" is stuck at VCC
+    Warning (13410): Pin "DATA_B[5]" is stuck at VCC
+    Warning (13410): Pin "DATA_B[6]" is stuck at VCC
+    Warning (13410): Pin "DATA_B[7]" is stuck at VCC
+    Warning (13410): Pin "enable" is stuck at VCC
+    Warning (13410): Pin "IH" is stuck at GND
+    Warning (13410): Pin "testled" is stuck at GND
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 165 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/logic_033/final_tetris/output_files/tetris.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 2555 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 5 input pins
+    Info (21059): Implemented 52 output pins
+    Info (21061): Implemented 2498 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 30 warnings
+    Info: Peak virtual memory: 4639 megabytes
+    Info: Processing ended: Tue Jan 02 11:33:58 2024
+    Info: Elapsed time: 00:00:23
+    Info: Total CPU time (on all processors): 00:00:13
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/logic_033/final_tetris/output_files/tetris.map.smsg.
+
+
