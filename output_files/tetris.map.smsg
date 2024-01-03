@@ -1,3 +1,2 @@
-Warning (10268): Verilog HDL information at tetris.v(273): always construct contains both blocking and non-blocking assignments
-Warning (10268): Verilog HDL information at tetris.v(399): always construct contains both blocking and non-blocking assignments
-Warning (10268): Verilog HDL information at tetris.v(523): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at tetris.v(271): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at tetris.v(414): always construct contains both blocking and non-blocking assignments

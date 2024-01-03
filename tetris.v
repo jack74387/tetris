@@ -240,9 +240,7 @@ module tetris(
 													  4'b0011,
 													  4'b0111,
 													  4'b1111};
-													  
-	wire beep_act;								  
-	divfreq_beep(CLK, beep_act, beep);
+													  							  
 	divfreq F0 (CLK, CLK_div);
 	divfreq2 F1 (CLK, CLK_div2);
 	divfreq_change F4 (CLK, CLK_div_change);
@@ -252,10 +250,10 @@ module tetris(
 	reg [0:1] rotate = 2'b00;
 	int over;
 	int clean_flag;
+	int sss;
 
 	initial
 		begin
-			beep_act = 0;
 			cnt = 0;
 			DATA_R = 8'b11111111;
 			DATA_G = 8'b11111111;
@@ -281,13 +279,12 @@ module tetris(
 			
 			if(newblock)
 			begin
-				back_Char <= back_Char&front_Char;												//??????
+				back_Char <= back_Char&front_Char;												
 				s <= s4%7; //get new block
 				
 				//clean whole line
 				for(int j=0;j<8;j++)
 				begin
-					
 					clean_flag = 1;
 					for(int i=2;i<10;i++)
 						if(back_Char[i][j]==1'b1)	//if one is no light,...(1 = no light)
@@ -306,8 +303,8 @@ module tetris(
 						if(level == 8'b11000000)//if you want to level up quickly, change to 8'b10000000 will level up very fast and easy
 						begin
 							level_n = level_n + 1;
-							beep_act <= 1;
 							level <= 8'b00000000;
+							//beep = 1;
 						end
 						//level plus
 						else begin
@@ -319,7 +316,6 @@ module tetris(
 				//game over
 				if(~over_Char&~back_Char) //vector "every bit AND", a quickly way
 				begin
-					beep_act <= 1;
 					front_Char <= blank_front_Char;
 					back_Char <= blank_front_Char;
 					over = 1;
@@ -342,8 +338,25 @@ module tetris(
 			
 			//print
 			//DATA_B <= clean_Char[cnt+2][0:7];
-			DATA_R <= front_Char[cnt+2][0:7];																			//plus two kinds of color
-			DATA_G <= back_Char[cnt+2][0:7];
+			
+			if(level_n >= 5)
+			begin
+				DATA_R <= front_Char[cnt+2][0:7];
+				DATA_B <= front_Char[cnt+2][0:7];								//plus two kinds of color
+				DATA_G <= back_Char[cnt+2][0:7];
+			end
+			else if(level_n % 2== 0)
+			begin
+				DATA_B <= blank_front_Char[cnt+2][0:7];
+				DATA_R <= front_Char[cnt+2][0:7];								
+				DATA_G <= back_Char[cnt+2][0:7];
+			end
+			else
+			begin
+				DATA_R <= blank_front_Char[cnt+2][0:7];
+				DATA_B <= front_Char[cnt+2][0:7];	
+				DATA_G <= back_Char[cnt+2][0:7];
+			end
 			
 			//print level number
 			//Hexadecimal to 7SEG
@@ -377,11 +390,13 @@ module tetris(
 				//DATA_G <= windows_Char[cnt];
 				DATA_R <= windows_Char[cnt];				//beep may this
 				over++;
+				beep = 1;
 			end
 			else if(over>=50000)
 			begin
 				//DATA_B <= 8'b11111111;
 				over=0;
+				beep = 0;
 			end
 			//prepare for touch check
 			for(int i=0;i<11;i++)
@@ -516,25 +531,5 @@ begin
 		else
 			Count <= Count + 1'b1;
 end
-endmodule
-//beeep
-module divfreq_beep(input CLK, beep_act, output reg beep);		//1Hz
-	reg [24:0] Count;
-	always @(posedge CLK)
-		begin
-		if(Count >= 25000000)
-			begin
-				Count <= 25'b0;
-				if(beep_act)
-					beep = 1;
-				else 
-					beep = 0;
-			end
-		else begin
-				if(Count == 25000000 -1)
-					beep = 0;
-				Count <= Count + 1'b1;
-			end
-		end
 endmodule
 

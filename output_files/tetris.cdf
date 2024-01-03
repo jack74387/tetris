@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP3C10E144) Path("C:/logic_033/final_tetris/output_files/") File("tetris.sof") MfrSpec(OpMask(1));
+		Device PartName(EP3C10E144) Path("C:/Code/verilog/tetris/output_files/") File("tetris.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
