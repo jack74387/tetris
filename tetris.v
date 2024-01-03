@@ -281,7 +281,7 @@ module tetris(
 			
 			if(newblock)
 			begin
-				back_Char <= back_Char&front_Char;
+				back_Char <= back_Char&front_Char;												//??????
 				s <= s4%7; //get new block
 				
 				//clean whole line
@@ -290,7 +290,7 @@ module tetris(
 					
 					clean_flag = 1;
 					for(int i=2;i<10;i++)
-						if(back_Char[i][j]==1'b1)
+						if(back_Char[i][j]==1'b1)	//if one is no light,...(1 = no light)
 							clean_flag = 0;
 					
 					//if((~clean_Char&~back_Char)==(~clean_Char)) //old
@@ -298,8 +298,8 @@ module tetris(
 					begin
 						for(int i=0;i<11;i++)
 							begin
-								for(int element=j;element<7;element++)
-									back_Char[i][element] <= back_Char[i][element+1];   //if whole line ,down
+								for(int row=j;row<7;row++)
+									back_Char[i][row] <= back_Char[i][row+1];   //if whole line is light,down one line
 								back_Char[i][7] <= 1'b1;
 							end
 						//level max -> level up (speed up)
@@ -331,18 +331,18 @@ module tetris(
 			
 			//clean
 			front_Char <= blank_front_Char;
-			//GAME OVER will NOT show new blocks, windows cry only
+			//GAME OVER will NOT show new blocks, windows xx only
 			if(over==0)
 			begin
 			for(int i=0;i<4;i++)
 				begin
-					front_Char[x+i][y+:4] <= tetris[s*16+i+rotate*4];
+					front_Char[x+i][y+:4] <= tetris[s*16+i+rotate*4];	// s:which blocks //rotate:which direction
 				end
 			end
 			
 			//print
 			//DATA_B <= clean_Char[cnt+2][0:7];
-			DATA_R <= front_Char[cnt+2][0:7];
+			DATA_R <= front_Char[cnt+2][0:7];																			//plus two kinds of color
 			DATA_G <= back_Char[cnt+2][0:7];
 			
 			//print level number
@@ -371,11 +371,11 @@ module tetris(
 				seg <= 7'b0000000;
 			
 			//print GAME OVER :(
-			if(over>0&&over<50000)
+			if(over>0&&over<50000)	//continued some time
 			begin
 				//DATA_B <= ~windows_Char[cnt];
 				//DATA_G <= windows_Char[cnt];
-				DATA_R <= windows_Char[cnt];
+				DATA_R <= windows_Char[cnt];				//beep may this
 				over++;
 			end
 			else if(over>=50000)
@@ -396,7 +396,7 @@ module tetris(
 		begin
 			s4 <= s4 + 1'b1;
 		end
-	always @(posedge CLK_div_change) // 50h
+	always @(posedge CLK_div_change) // 50Hz
 		begin
 			if(over==0)
 			begin
@@ -421,18 +421,18 @@ module tetris(
 				
 				if(newblock==1)
 					newblock<=0;
-				else if(down && y>0 &&~(~front_test_Char&~back_test_two_Char) && dcount == 0)
+				else if(down && y>0 &&~(~front_test_Char&~back_test_two_Char) && dcount == 0)	//~(~front_test_Char&~back_test_two_Char):if too low(2 lines) to touch the floor, not down quickly.
 				begin
 					y = y - 1;
 					dcount = 1;
 					count = 0;
 				end
-				else if(count>40 - 4*level_n)
+				else if(count>40 - 4*level_n)		//level up, speed up
 				begin
 					count <= 0;
 					dcount = 1;
 					
-					if(~front_test_Char&~back_test_Char)
+					if(~front_test_Char&~back_test_Char)	//touch the bottom or have blocks below it.
 						begin
 							newblock <= 1;
 							x = 5;
@@ -474,7 +474,7 @@ module tetris(
 endmodule
 
 //update front and do lots of things immediately
-module divfreq(input CLK, output reg CLK_div);
+module divfreq(input CLK, output reg CLK_div);		//12500Hz
 reg [24:0] Count;
 always @(posedge CLK)
 begin
@@ -489,11 +489,11 @@ end
 endmodule
 
 //generate random number
-module divfreq2(input CLK, output reg CLK_div2);
+module divfreq2(input CLK, output reg CLK_div2);		//the fastest 750000Hz
 reg [24:0] Count;
 always @(posedge CLK)
 begin
-	if(Count >= 333)               
+	if(Count >= 333)              
 		begin
 			Count <= 25'b0;
 			CLK_div2 <= ~CLK_div2;
@@ -504,11 +504,11 @@ end
 endmodule
 
 //tetris full down speed
-module divfreq_change(input CLK, output reg CLK_div_change);
+module divfreq_change(input CLK, output reg CLK_div_change);		//50Hz
 reg [24:0] Count;
 always @(posedge CLK)
 begin
-	if(Count >= 500000)   //50h
+	if(Count >= 500000)   
 		begin
 			Count <= 25'b0;
 			CLK_div_change <= ~CLK_div_change;
@@ -518,11 +518,11 @@ begin
 end
 endmodule
 //beeep
-module divfreq_beep(input CLK, beep_act, output reg beep);
+module divfreq_beep(input CLK, beep_act, output reg beep);		//1Hz
 	reg [24:0] Count;
 	always @(posedge CLK)
 		begin
-		if(Count >= 25000000)   //1h
+		if(Count >= 25000000)
 			begin
 				Count <= 25'b0;
 				if(beep_act)

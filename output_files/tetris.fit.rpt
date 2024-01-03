@@ -1,5 +1,5 @@
 Fitter report for tetris
-Tue Jan 02 16:34:04 2024
+Wed Jan 03 01:10:12 2024
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -68,7 +68,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Fitter Summary                                                                  ;
 +------------------------------------+--------------------------------------------+
-; Fitter Status                      ; Successful - Tue Jan 02 16:34:04 2024      ;
+; Fitter Status                      ; Successful - Wed Jan 03 01:10:12 2024      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; tetris                                     ;
 ; Top-level Entity Name              ; tetris                                     ;
@@ -2214,10 +2214,10 @@ Info (170192): Fitter placement operations ending: elapsed time is 00:00:03
 Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 6% of the available device resources
     Info (170196): Router estimated peak interconnect usage is 19% of the available device resources in the region that extends from location X11_Y12 to location X22_Y24
-Info (170194): Fitter routing operations ending: elapsed time is 00:00:03
+Info (170194): Fitter routing operations ending: elapsed time is 00:00:04
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
-Info (11888): Total time spent on timing analysis during the Fitter is 1.61 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 1.67 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -2225,10 +2225,10 @@ Info (334004): Delay annotation completed successfully
 Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
 Info (144001): Generated suppressed messages file C:/Code/verilog/tetris/output_files/tetris.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 4982 megabytes
-    Info: Processing ended: Tue Jan 02 16:34:05 2024
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:11
+    Info: Peak virtual memory: 4980 megabytes
+    Info: Processing ended: Wed Jan 03 01:10:13 2024
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:12
 
 
 +----------------------------+
