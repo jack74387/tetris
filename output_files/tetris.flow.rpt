@@ -1,5 +1,5 @@
 Flow report for tetris
-Wed Jan 03 12:26:12 2024
+Wed Jan 03 15:43:25 2024
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -40,17 +40,17 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Wed Jan 03 12:26:12 2024      ;
+; Flow Status                        ; Successful - Wed Jan 03 15:43:25 2024      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; tetris                                     ;
 ; Top-level Entity Name              ; tetris                                     ;
 ; Family                             ; Cyclone III                                ;
 ; Device                             ; EP3C10E144C8                               ;
 ; Timing Models                      ; Final                                      ;
-; Total logic elements               ; 2,378 / 10,320 ( 23 % )                    ;
-;     Total combinational functions  ; 2,254 / 10,320 ( 22 % )                    ;
-;     Dedicated logic registers      ; 751 / 10,320 ( 7 % )                       ;
-; Total registers                    ; 751                                        ;
+; Total logic elements               ; 2,476 / 10,320 ( 24 % )                    ;
+;     Total combinational functions  ; 2,326 / 10,320 ( 23 % )                    ;
+;     Dedicated logic registers      ; 783 / 10,320 ( 8 % )                       ;
+; Total registers                    ; 783                                        ;
 ; Total pins                         ; 49 / 95 ( 52 % )                           ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0 / 423,936 ( 0 % )                        ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 01/03/2024 12:25:46 ;
+; Start date & time ; 01/03/2024 15:42:59 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; tetris              ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+--------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                          ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+--------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 96830611947035.170425594609868 ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 96830611947035.170426777914632 ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                    ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)      ; <None>        ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                             ; --            ; --          ; --             ;
@@ -96,11 +96,11 @@ applicable agreement for further details.
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Analysis & Synthesis      ; 00:00:06     ; 1.0                     ; 4635 MB             ; 00:00:06                           ;
-; Fitter                    ; 00:00:11     ; 1.0                     ; 4977 MB             ; 00:00:10                           ;
-; Assembler                 ; 00:00:01     ; 1.0                     ; 4581 MB             ; 00:00:01                           ;
-; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 4647 MB             ; 00:00:02                           ;
-; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 4565 MB             ; 00:00:02                           ;
-; Total                     ; 00:00:22     ; --                      ; --                  ; 00:00:21                           ;
+; Fitter                    ; 00:00:11     ; 1.0                     ; 4981 MB             ; 00:00:11                           ;
+; Assembler                 ; 00:00:00     ; 1.0                     ; 4575 MB             ; 00:00:01                           ;
+; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 4648 MB             ; 00:00:01                           ;
+; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 4571 MB             ; 00:00:02                           ;
+; Total                     ; 00:00:21     ; --                      ; --                  ; 00:00:21                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

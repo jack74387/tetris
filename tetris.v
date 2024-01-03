@@ -14,7 +14,7 @@ module tetris(
 			reg newblock;
 			int level_n = 0;
 			
-	var bit [0:7][7:0] windows_Char = '{8'b11111111,           //:)
+	var bit [0:7][7:0] windows_Char = '{8'b11111111,           //:(
 													8'b10111101,
 													8'b11011011,
 													8'b11011111,
@@ -250,7 +250,7 @@ module tetris(
 	reg [0:1] rotate = 2'b00;
 	int over;
 	int clean_flag;
-	int sss;
+	int beep_time;
 
 	initial
 		begin
@@ -266,6 +266,7 @@ module tetris(
 			over = 0;
 			seg <= 7'b0000001;
 			level_n = 0;
+			beep_time = 0;
 		end
 	
 	always @(posedge CLK_div)// update screen
@@ -275,6 +276,19 @@ module tetris(
 			else
 				cnt <= cnt+1;
 			COMM <= cnt;
+			
+			
+			if(beep ==1)
+			begin
+				beep_time = beep_time + 1;
+			end
+			if(beep_time >= 12500)
+			begin
+				beep_time = 0;
+				beep = 0;
+			end
+				
+				
 			
 			
 			if(newblock)
@@ -304,7 +318,7 @@ module tetris(
 						begin
 							level_n = level_n + 1;
 							level <= 8'b00000000;
-							//beep = 1;
+							beep = 1;
 						end
 						//level plus
 						else begin
@@ -384,7 +398,7 @@ module tetris(
 				seg <= 7'b0000000;
 			
 			//print GAME OVER :(
-			if(over>0&&over<50000)	//continued some time
+			if(over>0&&over<20000)	//continued some time
 			begin
 				//DATA_B <= ~windows_Char[cnt];
 				//DATA_G <= windows_Char[cnt];
@@ -392,7 +406,7 @@ module tetris(
 				over++;
 				beep = 1;
 			end
-			else if(over>=50000)
+			else if(over>=20000)
 			begin
 				//DATA_B <= 8'b11111111;
 				over=0;
