@@ -5,7 +5,7 @@ module tetris(
 			output reg [0:6]  seg= 7'b0000001,
 			output reg beep,
 			output enable,
-			input left, right, change, down,
+			input left, right, change, down, killed,
 			input CLK);
 			
 			reg [2:0] s = 3'b000;	//which block
@@ -344,6 +344,8 @@ module tetris(
 			//GAME OVER will NOT show new blocks, windows xx only
 			if(over==0)
 			begin
+				if(killed) over = 1;
+				else over = 0;
 			for(int i=0;i<4;i++)
 				begin
 					front_Char[x+i][y+:4] <= tetris[s*16+i+rotate*4];	// s:which blocks //rotate:which direction

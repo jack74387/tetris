@@ -1,5 +1,5 @@
 Analysis & Synthesis report for tetris
-Wed Jan 03 15:43:05 2024
+Wed Jan 03 15:58:06 2024
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -48,16 +48,16 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Jan 03 15:43:05 2024      ;
+; Analysis & Synthesis Status        ; Successful - Wed Jan 03 15:58:06 2024      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; tetris                                     ;
 ; Top-level Entity Name              ; tetris                                     ;
 ; Family                             ; Cyclone III                                ;
-; Total logic elements               ; 2,516                                      ;
-;     Total combinational functions  ; 2,325                                      ;
+; Total logic elements               ; 2,520                                      ;
+;     Total combinational functions  ; 2,329                                      ;
 ;     Dedicated logic registers      ; 783                                        ;
 ; Total registers                    ; 783                                        ;
-; Total pins                         ; 49                                         ;
+; Total pins                         ; 50                                         ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
@@ -169,16 +169,16 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                       ; Library ;
 +----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
-; tetris.v                         ; yes             ; User Verilog HDL File        ; C:/Code/verilog/tetris/tetris.v                                    ;         ;
+; tetris.v                         ; yes             ; User Verilog HDL File        ; C:/logic_033/N_tetris/tetris/tetris.v                              ;         ;
 ; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
 ; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
 ; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
 ; aglobal131.inc                   ; yes             ; Megafunction                 ; c:/altera/13.1/quartus/libraries/megafunctions/aglobal131.inc      ;         ;
-; db/lpm_divide_78m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Code/verilog/tetris/db/lpm_divide_78m.tdf                       ;         ;
-; db/sign_div_unsign_5kh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Code/verilog/tetris/db/sign_div_unsign_5kh.tdf                  ;         ;
-; db/alt_u_div_l2f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Code/verilog/tetris/db/alt_u_div_l2f.tdf                        ;         ;
-; db/add_sub_unc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Code/verilog/tetris/db/add_sub_unc.tdf                          ;         ;
-; db/add_sub_vnc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Code/verilog/tetris/db/add_sub_vnc.tdf                          ;         ;
+; db/lpm_divide_78m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/logic_033/N_tetris/tetris/db/lpm_divide_78m.tdf                 ;         ;
+; db/sign_div_unsign_5kh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/logic_033/N_tetris/tetris/db/sign_div_unsign_5kh.tdf            ;         ;
+; db/alt_u_div_l2f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/logic_033/N_tetris/tetris/db/alt_u_div_l2f.tdf                  ;         ;
+; db/add_sub_unc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/logic_033/N_tetris/tetris/db/add_sub_unc.tdf                    ;         ;
+; db/add_sub_vnc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/logic_033/N_tetris/tetris/db/add_sub_vnc.tdf                    ;         ;
 +----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
 
 
@@ -187,27 +187,27 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+--------------------+
 ; Resource                                    ; Usage              ;
 +---------------------------------------------+--------------------+
-; Estimated Total logic elements              ; 2,516              ;
+; Estimated Total logic elements              ; 2,520              ;
 ;                                             ;                    ;
-; Total combinational functions               ; 2325               ;
+; Total combinational functions               ; 2329               ;
 ; Logic element usage by number of LUT inputs ;                    ;
-;     -- 4 input functions                    ; 1233               ;
-;     -- 3 input functions                    ; 354                ;
-;     -- <=2 input functions                  ; 738                ;
+;     -- 4 input functions                    ; 1232               ;
+;     -- 3 input functions                    ; 360                ;
+;     -- <=2 input functions                  ; 737                ;
 ;                                             ;                    ;
 ; Logic elements by mode                      ;                    ;
-;     -- normal mode                          ; 1719               ;
+;     -- normal mode                          ; 1723               ;
 ;     -- arithmetic mode                      ; 606                ;
 ;                                             ;                    ;
 ; Total registers                             ; 783                ;
 ;     -- Dedicated logic registers            ; 783                ;
 ;     -- I/O registers                        ; 0                  ;
 ;                                             ;                    ;
-; I/O pins                                    ; 49                 ;
+; I/O pins                                    ; 50                 ;
 ; Embedded Multiplier 9-bit elements          ; 0                  ;
 ; Maximum fan-out node                        ; divfreq:F0|CLK_div ;
 ; Maximum fan-out                             ; 540                ;
-; Total fan-out                               ; 9555               ;
+; Total fan-out                               ; 9568               ;
 ; Average fan-out                             ; 2.98               ;
 +---------------------------------------------+--------------------+
 
@@ -217,7 +217,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                     ; Library Name ;
 +----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------+--------------+
-; |tetris                                ; 2325 (2217)       ; 783 (705)    ; 0           ; 0            ; 0       ; 0         ; 49   ; 0            ; |tetris                                                                                                 ; work         ;
+; |tetris                                ; 2329 (2221)       ; 783 (705)    ; 0           ; 0            ; 0       ; 0         ; 50   ; 0            ; |tetris                                                                                                 ; work         ;
 ;    |divfreq2:F1|                       ; 34 (34)           ; 26 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |tetris|divfreq2:F1                                                                                     ; work         ;
 ;    |divfreq:F0|                        ; 34 (34)           ; 26 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |tetris|divfreq:F0                                                                                      ; work         ;
 ;    |divfreq_change:F4|                 ; 33 (33)           ; 26 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |tetris|divfreq_change:F4                                                                               ; work         ;
@@ -647,25 +647,25 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; Yes        ; |tetris|x[10]              ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |tetris|count[28]          ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |tetris|over[5]            ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |tetris|seg[0]~reg0        ;
-; 5:1                ; 30 bits   ; 90 LEs        ; 30 LEs               ; 60 LEs                 ; Yes        ; |tetris|y[13]              ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; Yes        ; |tetris|x[9]               ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |tetris|count[31]          ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |tetris|over[26]           ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |tetris|seg[5]~reg0        ;
+; 5:1                ; 30 bits   ; 90 LEs        ; 30 LEs               ; 60 LEs                 ; Yes        ; |tetris|y[25]              ;
 ; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |tetris|rotate[0]          ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |tetris|level[1]~reg0      ;
-; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |tetris|back_Char[2][0]    ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |tetris|level[6]~reg0      ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |tetris|back_Char[4][0]    ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |tetris|DATA_B[4]~reg0     ;
-; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |tetris|back_Char[8][1]    ;
-; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |tetris|DATA_R[3]~reg0     ;
-; 5:1                ; 11 bits   ; 33 LEs        ; 22 LEs               ; 11 LEs                 ; Yes        ; |tetris|back_Char[0][2]    ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |tetris|y[0]               ;
-; 32:1               ; 8 bits    ; 168 LEs       ; 64 LEs               ; 104 LEs                ; Yes        ; |tetris|DATA_G[5]~reg0     ;
-; 6:1                ; 11 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |tetris|back_Char[4][3]    ;
-; 7:1                ; 11 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |tetris|back_Char[9][4]    ;
-; 8:1                ; 11 bits   ; 55 LEs        ; 22 LEs               ; 33 LEs                 ; Yes        ; |tetris|back_Char[9][5]    ;
-; 9:1                ; 11 bits   ; 66 LEs        ; 22 LEs               ; 44 LEs                 ; Yes        ; |tetris|back_Char[5][6]    ;
-; 10:1               ; 11 bits   ; 66 LEs        ; 11 LEs               ; 55 LEs                 ; Yes        ; |tetris|back_Char[7][7]    ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; Yes        ; |tetris|back_Char[9][1]    ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; Yes        ; |tetris|DATA_R[1]~reg0     ;
+; 5:1                ; 11 bits   ; 33 LEs        ; 22 LEs               ; 11 LEs                 ; Yes        ; |tetris|back_Char[6][2]    ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |tetris|y[3]               ;
+; 32:1               ; 8 bits    ; 168 LEs       ; 64 LEs               ; 104 LEs                ; Yes        ; |tetris|DATA_G[6]~reg0     ;
+; 6:1                ; 11 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |tetris|back_Char[8][3]    ;
+; 7:1                ; 11 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |tetris|back_Char[2][4]    ;
+; 8:1                ; 11 bits   ; 55 LEs        ; 22 LEs               ; 33 LEs                 ; Yes        ; |tetris|back_Char[2][5]    ;
+; 9:1                ; 11 bits   ; 66 LEs        ; 22 LEs               ; 44 LEs                 ; Yes        ; |tetris|back_Char[2][6]    ;
+; 10:1               ; 11 bits   ; 66 LEs        ; 11 LEs               ; 55 LEs                 ; Yes        ; |tetris|back_Char[3][7]    ;
 ; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |tetris|level_n            ;
 ; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |tetris|level_n            ;
 ; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |tetris|level_n            ;
@@ -674,12 +674,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |tetris|level_n            ;
 ; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |tetris|level_n            ;
 ; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |tetris|over               ;
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |tetris|Selector9          ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |tetris|Selector0          ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |tetris|Selector0          ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |tetris|Selector10         ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |tetris|Selector2          ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |tetris|Selector2          ;
 ; 4:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |tetris|dcount             ;
 ; 5:1                ; 32 bits   ; 96 LEs        ; 64 LEs               ; 32 LEs                 ; No         ; |tetris|level_n            ;
-; 32:1               ; 8 bits    ; 168 LEs       ; 64 LEs               ; 104 LEs                ; No         ; |tetris|Mux7               ;
+; 32:1               ; 8 bits    ; 168 LEs       ; 64 LEs               ; 104 LEs                ; No         ; |tetris|Mux5               ;
 ; 7:1                ; 32 bits   ; 128 LEs       ; 64 LEs               ; 64 LEs                 ; No         ; |tetris|x                  ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
@@ -729,7 +729,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:05     ;
+; Top            ; 00:00:17     ;
 +----------------+--------------+
 
 
@@ -739,7 +739,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Wed Jan 03 15:42:59 2024
+    Info: Processing started: Wed Jan 03 15:57:46 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off tetris -c tetris
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 4 design units, including 4 entities, in source file tetris.v
@@ -781,23 +781,23 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "enable" is stuck at VCC
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 165 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file C:/Code/verilog/tetris/output_files/tetris.map.smsg
+Info (144001): Generated suppressed messages file C:/logic_033/N_tetris/tetris/output_files/tetris.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 2597 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 5 input pins
+Info (21057): Implemented 2604 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 6 input pins
     Info (21059): Implemented 44 output pins
-    Info (21061): Implemented 2548 logic cells
+    Info (21061): Implemented 2554 logic cells
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 11 warnings
-    Info: Peak virtual memory: 4639 megabytes
-    Info: Processing ended: Wed Jan 03 15:43:05 2024
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:06
+    Info: Peak virtual memory: 4643 megabytes
+    Info: Processing ended: Wed Jan 03 15:58:06 2024
+    Info: Elapsed time: 00:00:20
+    Info: Total CPU time (on all processors): 00:00:17
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Code/verilog/tetris/output_files/tetris.map.smsg.
+The suppressed messages can be found in C:/logic_033/N_tetris/tetris/output_files/tetris.map.smsg.
 
 
