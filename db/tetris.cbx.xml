@@ -1,6 +1,5 @@
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="tetris">
-		<CBX_INST_ENTRY INSTANCE_NAME="|tetris|lpm_divide:Mod0" CBX_FILE_NAME="lpm_divide_78m.tdf"/>
 	</PROJECT>
 </LOG_ROOT>

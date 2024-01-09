@@ -8,11 +8,20 @@ module tetris(
 			input left, right, change, down, killed,
 			input CLK);
 			
-			reg [2:0] s = 3'b000;	//which block
-			reg [2:0] s4 = 3'b000;	//s = s4%7
+			reg [3:0] s = 4'b0000;	//which block
+			reg [3:0] s4 = 4'b0000;	//s = s4%7
 			assign enable = 1'b1;
 			reg newblock;
 			int level_n = 0;
+			
+	var bit [0:7][7:0] stop_Char = '{8'b11111111,           //:)
+													8'b11011001,
+													8'b10111001,
+													8'b10111111,
+													8'b10111111,
+													8'b10111001,
+													8'b11011001,
+													8'b11111111};
 			
 	var bit [0:7][7:0] windows_Char = '{8'b11111111,           //:(
 													8'b10111101,
@@ -100,7 +109,27 @@ module tetris(
 													12'b111111110111,
 													12'b111111111111};
 	
-	parameter logic [0:3] tetris [0:111] = '{//I
+	parameter logic [0:3] tetris [0:127] = '{//I
+													  4'b1111,
+													  4'b0111,
+													  4'b1111,
+													  4'b1111,
+													  
+													  4'b1111,
+													  4'b0111,
+													  4'b1111,
+													  4'b1111,
+													  
+													  4'b1111,
+													  4'b0111,
+													  4'b1111,
+													  4'b1111,
+													  
+													  4'b1111,
+													  4'b0111,
+													  4'b1111,
+													  4'b1111,
+	
 													  4'b0111,
 													  4'b0111,
 													  4'b0111,
@@ -251,6 +280,7 @@ module tetris(
 	int over;
 	int clean_flag;
 	int beep_time;
+	int stop;
 
 	initial
 		begin
@@ -262,11 +292,12 @@ module tetris(
 			x = 5;
 			y = 9;
 			rotate = 0;
-			s <= s4%7;
+			s <= s4%8;
 			over = 0;
 			seg <= 7'b0000001;
 			level_n = 0;
 			beep_time = 0;
+			stop = 0;
 		end
 	
 	always @(posedge CLK_div)// update screen
@@ -287,14 +318,13 @@ module tetris(
 				beep_time = 0;
 				beep = 0;
 			end
-				
-				
-			
 			
 			if(newblock)
-			begin
-				back_Char <= back_Char&front_Char;												
-				s <= s4%7; //get new block
+			begin		
+			
+				back_Char <= back_Char&front_Char;	// update to new back_char											
+				s <= s4%8; //get new block
+				
 				
 				//clean whole line
 				for(int j=0;j<8;j++)
@@ -342,10 +372,20 @@ module tetris(
 			//clean
 			front_Char <= blank_front_Char;
 			//GAME OVER will NOT show new blocks, windows xx only
+			
 			if(over==0)
 			begin
-				if(killed) over = 1;
-				else over = 0;
+				if(killed)	//stop
+				begin
+					over = 1;
+					stop = 1;
+				end 
+				else 
+				begin 
+					over = 0;
+					stop = 0;
+				end
+				
 			for(int i=0;i<4;i++)
 				begin
 					front_Char[x+i][y+:4] <= tetris[s*16+i+rotate*4];	// s:which blocks //rotate:which direction
@@ -354,7 +394,6 @@ module tetris(
 			
 			//print
 			//DATA_B <= clean_Char[cnt+2][0:7];
-			
 			if(level_n >= 5)
 			begin
 				DATA_R <= front_Char[cnt+2][0:7];
@@ -402,16 +441,22 @@ module tetris(
 			//print GAME OVER :(
 			if(over>0&&over<20000)	//continued some time
 			begin
-				//DATA_B <= ~windows_Char[cnt];
-				//DATA_G <= windows_Char[cnt];
-				DATA_R <= windows_Char[cnt];				//beep may this
+				DATA_B <= blank_front_Char[cnt];
+				DATA_G <= blank_front_Char[cnt];				//beep may this
 				over++;
-				beep = 1;
+				if(stop == 0)
+				begin 
+					beep = 1;
+					DATA_R <= windows_Char[cnt];
+				end
+				else 
+					DATA_R <= stop_Char[cnt];
 			end
-			else if(over>=20000)
+			else if(over>=20000)	// new round
 			begin
 				//DATA_B <= 8'b11111111;
-				over=0;
+				if(down)
+					over = 0;
 				beep = 0;
 			end
 			//prepare for touch check
@@ -464,12 +509,12 @@ module tetris(
 					dcount = 1;
 					
 					if(~front_test_Char&~back_test_Char)	//touch the bottom or have blocks below it.
-						begin
+					begin
 							newblock <= 1;
 							x = 5;
 							y = 9;
 							rotate <= 0;
-						end	
+					end	
 					else if(y>0)
 						y = y - 1;
 					else
@@ -478,10 +523,10 @@ module tetris(
 						x = 5;
 						y = 9;
 						rotate <= 0;
+					end
 				end
-			end
-			else
-				count++;
+				else
+					count++;
 			
 			//prevent user full down too fast
 			if(dcount>20&&~(~front_test_Char&~back_test_two_Char))
@@ -494,9 +539,9 @@ module tetris(
 			//fix tetris overflow
 			if(x==1 && tetris[s*16+rotate*4]!=4'b1111)
 				x = x + 1;
-			if(x==0 && s==0 && (rotate==0||rotate==2))
+			if(x==0 && s==1 && (rotate==0||rotate==2))
 				x = x + 2;
-			else if(x==-1 && s==0 && (rotate==0||rotate==2))
+			else if(x==-1 && s==1 && (rotate==0||rotate==2))
 				x = x + 3;
 		
 			end
